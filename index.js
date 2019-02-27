@@ -1,12 +1,11 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
-const botSettings = require("./botsettings.json")
-const prefix = botSettings.prefix
+const prefix = process.env.PREFIX
 const Demande = require("./demande.js")
 
 
 
-bot.login(botSettings.token)
+bot.login(process.env.TOKEN)
 
 
 
