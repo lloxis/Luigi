@@ -97,7 +97,7 @@ bot.on('message', function (message) {
                     else message.channel.send('<@' + gagnants[0].id + '> a était tiré au sort parmi ' + nbDeParticipants + ' membres')
                 } else {
                     async function test() {
-                        let DemandeResult = await Demande.run('Voulez vous classer les tirés au sort ?', ['👍','👎'], message)
+                        let DemandeResult = await Demande.run('Voulez vous classer les tirés au sort ?\nVous avez 15 secondes pour répondre', ['👍','👎'], message)
                         switch(DemandeResult) {
                             case '👍':
                                 let messageToSend = ['Les tirés au sort sont :']
