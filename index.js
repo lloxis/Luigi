@@ -94,7 +94,7 @@ bot.on('message', function (message) {
                 console.log(nbDeGagnants)
                 if (nbDeGagnants === 1) {
                     if (gagnants.length <= 0 || gagnants.length === undefined) message.channel.send('Aucun membre valide trouvé. Si ce problème persiste contacter moi par mail : chtilouis782@gmail.com')
-                    else message.channel.send('<@' + gagnants[0].id + '> a était tiré au sort parmi ' + nbDeParticipants + ' membres')
+                    else message.channel.send('<@' + gagnants[0].id + '> a été tiré au sort parmi ' + nbDeParticipants + ' membres')
                 } else {
                     async function test() {
                         let DemandeResult = await Demande.run('Voulez vous classer les tirés au sort ?\nVous avez 15 secondes pour répondre', ['👍','👎'], message)
@@ -104,10 +104,10 @@ bot.on('message', function (message) {
                                 gagnants.forEach((gagnant, index) => {
                                     messageToSend.push(index + 1  + ' : ' + gagnant)
                                 })
-                                message.channel.send(messageToSend.join('\n') + '\nIls ont étaient tirés au sort parmi ' + nbDeParticipants + ' membres')
+                                message.channel.send(messageToSend.join('\n') + '\nIls ont étés rés au sort parmi ' + nbDeParticipants + ' membres')
                                 break
                             case '👎':
-                                message.channel.send(gagnants.join(' , ') + ' ont étaient tirés au sort parmi ' + nbDeParticipants + ' membres')
+                                message.channel.send(gagnants.join(' , ') + ' ont étés tirés au sort parmi ' + nbDeParticipants + ' membres')
                                 break
                             case 'TimeOut':
                                 message.channel.send('Tirage annulé')
