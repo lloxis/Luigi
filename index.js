@@ -71,7 +71,7 @@ bot.on('message', function (message) {
             if (args.length <= 0) nbDeGagnants = 1
             else {
                 let firstArgNumber = parseInt(args[0])
-                if (isNaN(firstArgNumber) === true && firstArgNumber < 1) {
+                if (isNaN(firstArgNumber) === true || firstArgNumber < 1) {
                     message.channel.send('Le premier argument de la commande tirage est le nombre de gagnants à tirer au sort. Il doit être un entier >= à 1')
                     return
                 }
