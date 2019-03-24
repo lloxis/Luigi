@@ -54,7 +54,7 @@ function tirageAuSort(participants, guild, nbDeGagnants) {
 bot.on('message', function (message) {
     if (message.content.startsWith(prefix) === false) return
     if (message.author.bot === true) return
-    //if (message.member.hasPermission('ADMINISTRATOR') === false) return
+    if (message.member.hasPermission('ADMINISTRATOR') === false) return
 
     let messageWithoutPrefix = message.content.slice(prefix.length)
 
