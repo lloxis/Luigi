@@ -54,11 +54,35 @@ function tirageAuSort(participants, guild, nbDeGagnants) {
 bot.on('message', function (message) {
     if (message.content.startsWith(prefix) === false) return
     if (message.author.bot === true) return
-    if (message.member.hasPermission('ADMINISTRATOR') === false) return
+    //if (message.member.hasPermission('ADMINISTRATOR') === false) return
 
     let messageWithoutPrefix = message.content.slice(prefix.length)
 
-
+    if (messageWithoutPrefix.startsWith('rename')) {
+        let oldName = messageWithoutPrefix.slice(7).split("/")[0]
+        let newName = messageWithoutPrefix.slice(7).split("/")[1]
+        if (oldName == newName) {
+            message.channel.send('Tu te fous de moi ? C\'est inutile ça')
+            return
+        }
+        let member = message.guild.members.array().filter(t => {
+            let name
+            if(t.nickname == null) name = t.user.username
+            else name = t.nickname
+            return name == oldName
+        })[0]
+        if (member) {
+            member.setNickname(newName)
+                .catch(error => {
+                    console.log(error.message)
+                    if (error.message == 'Missing Permissions') message.channel.send('Luigi n\'a pas la permission de faire ça')
+                    else message.channel.send('Impossible de renomer ce member')
+                })
+                .then(() => { if (member.nickname == newName) message.channel.send(oldName + ' s\'appele maintenant ' + newName) })
+        } else (message.channel.send('Le membre n\'a pas était trouvé'))
+        return
+    }
+    
     if (messageWithoutPrefix.startsWith('tirage')) {
         let messageArray = messageWithoutPrefix.split(" ")
         let messageFirstWord = messageArray[0]
