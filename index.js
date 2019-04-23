@@ -128,7 +128,7 @@ bot.on('message', function (message) {
                                 gagnants.forEach((gagnant, index) => {
                                     messageToSend.push(index + 1  + ' : ' + gagnant)
                                 })
-                                message.channel.send(messageToSend.join('\n') + '\nIls ont étés rés au sort parmi ' + nbDeParticipants + ' membres')
+                                message.channel.send(messageToSend.join('\n') + '\nIls ont étés tirés au sort parmi ' + nbDeParticipants + ' membres')
                                 break
                             case '👎':
                                 message.channel.send(gagnants.join(' , ') + ' ont étés tirés au sort parmi ' + nbDeParticipants + ' membres')
